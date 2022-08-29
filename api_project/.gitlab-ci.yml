@@ -41,14 +41,14 @@ deploy-stag:
   stage: deploy
   script: 
     - >
-      DOMAIN={{cookiecutter.domain_staging}}
-      TRAEFIK_TAG={{cookiecutter.traefik_constraint_tag_staging}}
-      STACK_NAME={{cookiecutter.docker_swarm_stack_name_staging}}
+      DOMAIN=staging.apiproject.com
+      TRAEFIK_TAG=staging.apiproject.com
+      STACK_NAME=staging-api_project-com
       TAG=stag
       sh ./scripts/deploy.sh
   environment:
     name: staging
-    url: https://{{cookiecutter.domain_staging}}
+    url: https://staging.apiproject.com
   only:
     - master
   tags:
@@ -59,14 +59,14 @@ deploy-prod:
   stage: deploy
   script:
     - >
-      DOMAIN={{cookiecutter.domain_main}}
-      TRAEFIK_TAG={{cookiecutter.traefik_constraint_tag}}
-      STACK_NAME={{cookiecutter.docker_swarm_stack_name_main}}
+      DOMAIN=apiproject.com
+      TRAEFIK_TAG=apiproject.com
+      STACK_NAME=api_project-com
       TAG=prod
       sh ./scripts/deploy.sh
   environment:
     name: production
-    url: https://{{cookiecutter.domain_main}}
+    url: https://apiproject.com
   only:
     - production
   tags:
